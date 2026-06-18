@@ -53,13 +53,16 @@ export function AppShell({
     { href: "/app/portals", label: t.nav.portals, icon: <Icon d={icons.portals} /> },
     { href: "/app/partner", label: t.nav.partner, icon: <Icon d={icons.partner} /> },
     { href: "/app/learn", label: t.nav.learn, icon: <Icon d={icons.learn} /> },
-    { href: "/app/account", label: t.nav.account, icon: <Icon d={icons.account} /> },
   ];
   // Partner role leads with Partner.
   const items =
-    role === "partner"
-      ? [base[0], base[2], base[1], base[3], base[4]]
-      : base;
+    role === "partner" ? [base[0], base[2], base[1], base[3]] : base;
+
+  const accountItem: Item = {
+    href: "/app/account",
+    label: t.nav.account,
+    icon: <Icon d={icons.account} />,
+  };
 
   const isActive = (href: string) =>
     href === "/app" ? pathname === "/app" : pathname.startsWith(href);
@@ -94,7 +97,18 @@ export function AppShell({
             </Link>
           ))}
         </nav>
-        <div className="border-t border-line pt-4">
+        <div className="space-y-1 border-t border-line pt-4">
+          <Link
+            href={accountItem.href}
+            className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+              isActive(accountItem.href)
+                ? "bg-blush-100 text-berry-600"
+                : "text-muted hover:bg-plum-50 hover:text-plum-700"
+            }`}
+          >
+            {accountItem.icon}
+            {accountItem.label}
+          </Link>
           <button
             onClick={signOut}
             className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-muted transition hover:bg-plum-50 hover:text-berry-500"
@@ -112,7 +126,20 @@ export function AppShell({
           <Link href="/app" className="lg:hidden">
             <Logo showBy={false} />
           </Link>
-          <LanguageToggle />
+          <div className="flex items-center gap-2">
+            <Link
+              href={accountItem.href}
+              aria-label={accountItem.label}
+              className={`rounded-full p-2 transition lg:hidden ${
+                isActive(accountItem.href)
+                  ? "bg-blush-100 text-berry-600"
+                  : "text-muted hover:text-plum-700"
+              }`}
+            >
+              {accountItem.icon}
+            </Link>
+            <LanguageToggle />
+          </div>
         </header>
 
         <main className="flex-1 pb-24 lg:pb-10">
