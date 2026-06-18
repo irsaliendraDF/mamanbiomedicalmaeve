@@ -7,13 +7,16 @@
 -- ---------------------------------------------------------------------------
 create extension if not exists "pgcrypto";
 
--- Short, human-shareable invite code (e.g. "MAEVE-7K2QX")
+-- Short, human-shareable invite code (e.g. "MAEVE-7K2QX").
+-- Uses the built-in gen_random_uuid() (pg_catalog) rather than pgcrypto's
+-- gen_random_bytes(), which lives in the `extensions` schema and isn't on the
+-- search_path of the security-definer signup trigger.
 create or replace function public.gen_invite_code()
 returns text
 language sql
 volatile
 as $$
-  select 'MAEVE-' || upper(substr(encode(gen_random_bytes(4), 'hex'), 1, 5));
+  select 'MAEVE-' || upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 5));
 $$;
 
 -- ---------------------------------------------------------------------------
