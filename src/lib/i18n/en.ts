@@ -37,6 +37,7 @@ export const en = {
     partner: "Partner",
     learn: "Learn",
     settings: "Settings",
+    account: "Account",
     signOut: "Sign out",
     dashboard: "Dashboard",
   },
@@ -134,6 +135,14 @@ export const en = {
     partnerNotConnected: "No partner connected yet",
     invitePartner: "Invite your partner",
     dayOf: "Day {n} of your cycle",
+    scheduleWidget: "Your schedule",
+    trackWidget: "Track a hormone",
+    quickAdd: "Quick add",
+    viewAll: "View all",
+    nothingUpcoming: "Nothing coming up. Add something below.",
+    logReading: "Log",
+    recentReadings: "Recent readings",
+    noReadings: "No readings yet.",
   },
   portals: {
     title: "The Portals",
@@ -254,6 +263,40 @@ export const en = {
     privacyBody:
       "Download or delete your data any time. Your hormone and treatment data is encrypted.",
     signOut: "Sign out",
+  },
+  account: {
+    title: "Account",
+    subtitle: "Manage your details, sign-in, and privacy.",
+    detailsTitle: "Your details",
+    displayName: "Display name",
+    language: "Language",
+    saved: "Saved",
+    save: "Save changes",
+    emailTitle: "Email address",
+    currentEmail: "Current email",
+    newEmail: "New email",
+    updateEmail: "Update email",
+    emailUpdateSent:
+      "Check both inboxes to confirm the change to your new email.",
+    passwordTitle: "Password",
+    newPassword: "New password",
+    confirmPassword: "Confirm new password",
+    updatePassword: "Update password",
+    passwordUpdated: "Your password has been updated.",
+    passwordMismatch: "Those passwords don't match.",
+    passwordTooShort: "Use at least 6 characters.",
+    privacyTitle: "Privacy & data",
+    privacyBody:
+      "Your hormone and treatment data is encrypted and never shared without your explicit consent. You can download or delete your data any time.",
+    downloadData: "Download my data",
+    dangerTitle: "Delete your data",
+    dangerBody:
+      "Permanently delete all your journey data (posts, hormone logs, schedule). This can't be undone.",
+    deleteAccount: "Delete all my data",
+    deleteConfirm:
+      "This permanently deletes all your journey data. Type DELETE to confirm.",
+    signOut: "Sign out",
+    errorGeneric: "Something went wrong. Please try again.",
   },
 };
 

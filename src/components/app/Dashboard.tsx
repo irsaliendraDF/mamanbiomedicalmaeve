@@ -7,6 +7,8 @@ import { useLanguage } from "@/lib/i18n/provider";
 import { fmt } from "@/lib/i18n/format";
 import { Card, Spinner } from "@/components/ui";
 import { PartnerBrief } from "@/components/app/PartnerBrief";
+import { ScheduleWidget } from "@/components/app/ScheduleWidget";
+import { TrackWidget } from "@/components/app/TrackWidget";
 import type { Profile, ScheduleEvent } from "@/lib/supabase/types";
 
 function greeting(t: ReturnType<typeof useLanguage>["t"]) {
@@ -73,11 +75,12 @@ export function Dashboard() {
           {profile.display_name ? `, ${profile.display_name}` : ""}.
         </h1>
         <PartnerBrief role="partner" />
-        <QuickLink
-          href="/app/learn"
-          title={t.nav.learn}
-          desc={t.learn.subtitle}
-        />
+        <Link href="/app/learn">
+          <Card className="transition hover:border-berry-400">
+            <p className="font-display text-xl text-plum-700">{t.nav.learn}</p>
+            <p className="mt-1 text-sm text-muted">{t.learn.subtitle}</p>
+          </Card>
+        </Link>
       </div>
     );
   }
@@ -90,10 +93,13 @@ export function Dashboard() {
           {profile?.display_name ? `, ${profile.display_name}` : ""}.
         </h1>
         {cycleDay && (
-          <p className="mt-1 text-muted">{fmt(t.dashboard.dayOf, { n: cycleDay })}</p>
+          <p className="mt-1 text-muted">
+            {fmt(t.dashboard.dayOf, { n: cycleDay })}
+          </p>
         )}
       </div>
 
+      {/* Next up */}
       <Card className="bg-brand-gradient border-0 text-white">
         <p className="text-sm text-white/70">{t.dashboard.quickSchedule}</p>
         {next ? (
@@ -116,23 +122,16 @@ export function Dashboard() {
         )}
       </Card>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <QuickLink
-          href="/app/portals"
-          title={t.portals.title}
-          desc={t.dashboard.quickPortals}
-        />
-        <QuickLink
-          href="/app/track"
-          title={t.track.title}
-          desc={t.dashboard.quickTrack}
-        />
-      </div>
+      {/* Schedule widget */}
+      <ScheduleWidget />
+
+      {/* Track widget */}
+      <TrackWidget />
 
       {/* Partner connection state */}
       {profile?.paired_with ? (
         <Card className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-grow-300/30 text-grow-500">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-grow-300/30 text-grow-500">
             ✓
           </span>
           <p className="font-medium text-plum-700">
@@ -141,36 +140,17 @@ export function Dashboard() {
         </Card>
       ) : (
         <Link href="/app/partner">
-          <Card className="flex items-center justify-between transition hover:border-berry-400">
-            <div>
+          <Card className="flex items-center justify-between gap-3 transition hover:border-berry-400">
+            <div className="min-w-0">
               <p className="font-medium text-plum-700">
                 {t.dashboard.partnerNotConnected}
               </p>
               <p className="text-sm text-muted">{t.dashboard.invitePartner}</p>
             </div>
-            <span className="text-berry-500">→</span>
+            <span className="shrink-0 text-berry-500">→</span>
           </Card>
         </Link>
       )}
     </div>
-  );
-}
-
-function QuickLink({
-  href,
-  title,
-  desc,
-}: {
-  href: string;
-  title: string;
-  desc: string;
-}) {
-  return (
-    <Link href={href}>
-      <Card className="h-full transition hover:border-berry-400 hover:shadow-md">
-        <p className="font-display text-xl text-plum-700">{title}</p>
-        <p className="mt-1 text-sm text-muted">{desc}</p>
-      </Card>
-    </Link>
   );
 }

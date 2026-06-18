@@ -36,9 +36,9 @@ export function Landing() {
     <div className="flex min-h-dvh flex-col">
       {/* Nav */}
       <header className="sticky top-0 z-30 border-b border-line/60 bg-cream/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-10 lg:px-16 py-4">
-          <Logo />
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 sm:px-10 lg:px-16">
+          <Logo showBy={false} className="shrink-0" />
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <LanguageToggle />
             <Link
               href="/login"
