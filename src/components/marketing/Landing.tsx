@@ -71,7 +71,7 @@ export function Landing() {
               <Button size="lg">{t.landing.heroCta}</Button>
             </Link>
             <a href="#how">
-              <Button size="lg" variant="ghost">
+              <Button size="lg" variant="outline">
                 {t.landing.heroSecondary}
               </Button>
             </a>
@@ -95,17 +95,17 @@ export function Landing() {
           <h2 className="text-center font-display text-3xl text-ink sm:text-4xl">
             {t.landing.featuresTitle}
           </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl border border-line bg-cream/50 p-7"
+                className="rounded-2xl border border-line bg-cream/50 p-6"
               >
                 <span className="text-3xl">{p.emoji}</span>
-                <h3 className="mt-4 font-display text-2xl text-plum-700">
+                <h3 className="mt-4 font-display text-xl text-plum-700">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-muted">{p.body}</p>
+                <p className="mt-2 text-sm text-muted">{p.body}</p>
               </div>
             ))}
           </div>

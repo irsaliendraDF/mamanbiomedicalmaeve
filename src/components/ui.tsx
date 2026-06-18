@@ -2,7 +2,7 @@
 
 import { forwardRef } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "soft";
+type Variant = "primary" | "secondary" | "ghost" | "soft" | "outline";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
@@ -12,6 +12,8 @@ const variants: Record<Variant, string> = {
     "bg-plum-700 text-white hover:bg-plum-600 shadow-sm shadow-plum-700/20",
   ghost: "bg-transparent text-plum-700 hover:bg-plum-50",
   soft: "bg-blush-100 text-berry-600 hover:bg-blush-50",
+  outline:
+    "border border-plum-200 bg-white text-plum-700 hover:border-berry-400 hover:bg-blush-50 active:bg-blush-100 shadow-sm shadow-plum-900/[0.04]",
 };
 
 const sizes: Record<Size, string> = {
@@ -33,7 +35,7 @@ export const Button = forwardRef<
   return (
     <button
       ref={ref}
-      className={`inline-flex items-center justify-center gap-2 rounded-full font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-berry-400 focus-visible:ring-offset-2 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full font-semibold transition active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-berry-400 focus-visible:ring-offset-2 ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     />
   );
