@@ -9,8 +9,8 @@ export const PORTALS: {
 }[] = [
   { key: "vent", emoji: "🔥", accent: "#c2185b", tint: "#fce4ec" },
   { key: "cry", emoji: "🌧️", accent: "#5a6db5", tint: "#e8ecf8" },
+  // "laugh" now also covers what used to be the separate Humour portal.
   { key: "laugh", emoji: "😂", accent: "#e8923a", tint: "#fdf0e2" },
-  { key: "humour", emoji: "🎭", accent: "#7a4b9e", tint: "#f0e8f8" },
 ];
 
 export function portalLabel(t: Dictionary, key: Portal) {

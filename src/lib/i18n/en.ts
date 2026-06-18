@@ -152,7 +152,8 @@ export const en = {
     cry: "Cry About It",
     cryDesc: "Held space for the failed cycles, the cancellations, the hard news.",
     laugh: "Laugh About It",
-    laughDesc: "Because sometimes the absurdity is the only way through.",
+    laughDesc:
+      "Memes, dark jokes, and the absurdity only IVF people understand. Sometimes laughing is the only way through.",
     humour: "Humour Portal",
     humourDesc: "Memes, dark jokes, and the things only IVF people understand.",
     composePrompt: "What's here for you right now?",

@@ -154,7 +154,8 @@ export const fr: Dictionary = {
     cry: "Pleurer",
     cryDesc: "Un espace bienveillant pour les cycles échoués, les annulations, les nouvelles difficiles.",
     laugh: "En rire",
-    laughDesc: "Parce que parfois l'absurde est la seule issue.",
+    laughDesc:
+      "Mèmes, blagues noires et l'absurde que seuls les gens en FIV comprennent. Parfois, rire est la seule issue.",
     humour: "Portail humour",
     humourDesc: "Mèmes, blagues noires, et les choses que seuls les gens en FIV comprennent.",
     composePrompt: "Qu'est-ce qui vous habite en ce moment ?",
