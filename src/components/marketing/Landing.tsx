@@ -36,7 +36,7 @@ export function Landing() {
     <div className="flex min-h-dvh flex-col">
       {/* Nav */}
       <header className="sticky top-0 z-30 border-b border-line/60 bg-cream/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-10 lg:px-16 py-4">
           <Logo />
           <div className="flex items-center gap-3">
             <LanguageToggle />
@@ -56,7 +56,7 @@ export function Landing() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="bg-blush-gradient absolute inset-0 -z-10" />
-        <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:py-28">
+        <div className="mx-auto max-w-4xl px-6 sm:px-10 lg:px-16 py-20 text-center sm:py-28">
           <span className="inline-block rounded-full bg-white/70 px-4 py-1.5 text-sm font-medium text-berry-600 shadow-sm animate-rise">
             {t.landing.heroEyebrow}
           </span>
@@ -80,7 +80,7 @@ export function Landing() {
       </section>
 
       {/* Problem */}
-      <section className="mx-auto max-w-4xl px-5 py-20 text-center">
+      <section className="mx-auto max-w-4xl px-6 sm:px-10 lg:px-16 py-20 text-center">
         <h2 className="font-display text-3xl text-ink sm:text-4xl">
           {t.landing.problemTitle}
         </h2>
@@ -90,16 +90,16 @@ export function Landing() {
       </section>
 
       {/* Pillars */}
-      <section id="how" className="bg-white py-20">
-        <div className="mx-auto max-w-5xl px-5">
+      <section id="how" className="bg-white py-24">
+        <div className="mx-auto max-w-6xl px-6 sm:px-10 lg:px-16">
           <h2 className="text-center font-display text-3xl text-ink sm:text-4xl">
             {t.landing.featuresTitle}
           </h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl border border-line bg-cream/50 p-6"
+                className="rounded-2xl border border-line bg-cream/50 p-7"
               >
                 <span className="text-3xl">{p.emoji}</span>
                 <h3 className="mt-4 font-display text-xl text-plum-700">
@@ -114,7 +114,7 @@ export function Landing() {
 
       {/* Couple section */}
       <section className="bg-brand-gradient py-24 text-white">
-        <div className="mx-auto max-w-3xl px-5 text-center">
+        <div className="mx-auto max-w-3xl px-6 sm:px-10 lg:px-16 text-center">
           <h2 className="font-display text-3xl sm:text-4xl">
             {t.landing.coupleTitle}
           </h2>
@@ -133,7 +133,7 @@ export function Landing() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-3xl px-5 py-24 text-center">
+      <section className="mx-auto max-w-3xl px-6 sm:px-10 lg:px-16 py-24 text-center">
         <h2 className="font-display text-4xl text-ink">{t.landing.ctaTitle}</h2>
         <p className="mt-4 text-muted">{t.landing.ctaBody}</p>
         <Link href="/signup" className="mt-8 inline-block">
@@ -143,7 +143,7 @@ export function Landing() {
 
       {/* Footer */}
       <footer className="border-t border-line py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 sm:flex-row">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:px-10 lg:px-16 sm:flex-row">
           <Logo />
           <p className="text-sm text-faint">{t.landing.footerNote}</p>
           <LanguageToggle />
