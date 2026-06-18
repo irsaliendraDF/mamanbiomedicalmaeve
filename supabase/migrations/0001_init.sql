@@ -42,9 +42,12 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
+-- Read your own profile, or your partner's. Note: we check `paired_with =
+-- auth.uid()` on the candidate row directly (not a subquery on profiles) to
+-- avoid infinite RLS recursion.
 create policy "profiles_select_own"
   on public.profiles for select to authenticated
-  using (id = auth.uid() or id = (select paired_with from public.profiles where id = auth.uid()));
+  using (id = auth.uid() or paired_with = auth.uid());
 
 create policy "profiles_update_own"
   on public.profiles for update to authenticated
