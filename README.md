@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maeve by Maman
 
-## Getting Started
+The IVF companion that finally gets it. A bilingual (EN/FR) digital-health MVP
+built for the couples journey through IVF.
 
-First, run the development server:
+Built with Next.js 16 (App Router) + Supabase + Claude, deployed on Vercel.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What's in the MVP
+
+- **Couples journey** — invite-code pairing, a one-way partner "emotional brief"
+  (Claude-generated), and patient-controlled sharing levels.
+- **The Portals** — Vent / Cry / Laugh / Humour, private or community posts.
+- **Track It** — hormone logging with plain-language interpretation (Claude).
+- **Schedule It** — injections, monitoring, trigger windows.
+- **Learn** — how-to video library + Claude-powered "what-if" answers.
+- **Consent-first** — minimum-viable-data onboarding with an audit trail.
+- **Bilingual** — full English/French toggle, persisted per visitor.
+
+## Stack
+
+| Layer | Choice |
+| --- | --- |
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Styling | Tailwind v4 + Fraunces/Inter |
+| Auth + DB | Supabase (email/password + magic link, RLS) |
+| AI | Anthropic Claude (`claude-sonnet-4-6`) |
+| Hosting | Vercel |
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` and fill in:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=        # Supabase project URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY=   # Supabase anon/publishable key
+ANTHROPIC_API_KEY=               # Claude API key (partner nudges, what-if, interpret)
+NEXT_PUBLIC_SITE_URL=            # e.g. https://maeve.vercel.app (for magic-link redirects)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app runs without these set (it shows a friendly "connect Supabase" state and
+the AI features fall back to curated content), so you can deploy first and wire
+keys after.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+SQL lives in `supabase/migrations/`:
 
-## Learn More
+- `0001_init.sql` — tables, RLS policies, the `connect_with_code` pairing
+  function, and the new-user profile trigger.
+- `0002_seed_videos.sql` — seed how-to library (swap URLs for Maman's own
+  clinician-reviewed videos before launch).
 
-To learn more about Next.js, take a look at the following resources:
+Apply both to the Supabase project (SQL editor or MCP), then set the env vars.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Develop
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build / typecheck
+```
 
-## Deploy on Vercel
+## Notes for launch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Disable Supabase email confirmation for the smoothest demo sign-up, or keep it
+  on and the app handles the confirm-email flow.
+- The how-to video URLs are placeholders pending Maman's own content.
+- AI responses are explicitly framed as information, not medical advice.
