@@ -5,6 +5,11 @@ built for the couples journey through IVF.
 
 Built with Next.js 16 (App Router) + Supabase + Claude, deployed on Vercel.
 
+> **📒 Full build & handoff doc (Notion):** the canonical reference for picking
+> this project up — architecture, credentials, schema, gotchas, and roadmap —
+> lives at https://app.notion.com/p/3837b3f79646813c8f45fab01c0f8539
+> (DigitalFlow TeamSpace → "Maeve by Maman — Build & Handoff Doc").
+
 ## What's in the MVP
 
 - **Couples journey** — invite-code pairing, a one-way partner "emotional brief"
